@@ -1,6 +1,7 @@
-var persons=
+/*var persons=
     [
         {
+            id : "asdfaasds",
             name:'Vasya',
             age:25,
             isHasPassport:true,
@@ -9,6 +10,7 @@ var persons=
             healthy: 80
         },
         {
+            id : "asdfasfd",
             name: 'Petya',
             age:30,
             isHasPassport:true,
@@ -17,6 +19,7 @@ var persons=
             healthy: 80
         },
         {
+            id : "asdfasasd",
             name: 'Zina',
             age:15,
             isHasPassport:true,
@@ -25,11 +28,23 @@ var persons=
             healthy: 80
         }
     ];
-window.onload = function()
-{
-    MigrationService(persons);
-    element();
-};
+*/
+
+function acceptMark(person){
+    let row = document.getElementById(`${person.id}`);
+    var td1 = document.createElement("TD");
+    td1.setAttribute("style", "background: green; color: white");
+    row.appendChild(td1);
+}
+function declineMark(person){
+    let row = document.getElementById(`${person.id}`);
+    var td1 = document.createElement("TD");
+    td1.appendChild(document.createTextNode(`-`));
+    row.appendChild(td1);
+    row.setAttribute("style", "background: red; color: white");
+}
+
+
 function MigrationService(persons){
     let i=0;
     let j;
@@ -57,23 +72,6 @@ function ProcessPerson(person){
             console.log(person);
         });
 }
-function PersonPromise(person,condition,messageComplete, messageFailed, timeout){
-    return new Promise((resolve, reject) => {
-        setTimeout(() =>{
-            if(condition){
-                console.log(messageComplete);
-                console.log(person);
-                resolve(person);
-            }
-            else{
-                console.log(messageFailed);
-                console.log(person);
-                reject(person);
-            }
-        }, timeout);
-    });
-}
-
 function PersonPromiseNew(person,condition,actionComplete, actionFailed, timeout){
     return new Promise((resolve, reject) => {
         setTimeout(() =>{
@@ -88,11 +86,19 @@ function PersonPromiseNew(person,condition,actionComplete, actionFailed, timeout
         }, timeout);
     });
 }
-function element(){
-    for (let i = 0; i < persons.length; i++)
-    {
-        let el = document.getElementsByClassName("Name");
-        el[0].innerHTML += `<div>${persons[i].name}<div>`;
+
+
+function element(id){
+    for(let i = 0; i < persons.length; i++) {
+        var tbody = document.getElementById(id).getElementsByTagName("TBODY")[0];
+        var row = document.createElement("TR");
+        var td1 = document.createElement("TD");
+        row.setAttribute("id",`${persons[i].id}`);
+        td1.appendChild(document.createTextNode(`${persons[i].name}`));
+
+        row.appendChild(td1);
+
+        tbody.appendChild(row);
     }
 }
 
@@ -115,11 +121,10 @@ function PoliceDepartment1(person){
     return PersonPromiseNew(person,
         person.age>18,
         ()=>{
-            let el=	document.getElementsByClassName("sub_police1");
-            el[0].innerHTML+='<div>+<div>';
+            acceptMark(person);
         },
         ()=>{
-            FailElement("sub_police1");
+            declineMark(person);
         },
         1000);
 }
@@ -128,11 +133,10 @@ function PoliceDepartment2(person){
     return PersonPromiseNew(person,
         (person.gender=='male'&&person.age>22)||(person.gender=='female'&&person.age>18),
         ()=>{
-            let el=	document.getElementsByClassName("sub_police2");
-            el[0].innerHTML+='<div>+<div>';
+            acceptMark(person);
         },
         ()=>{
-            FailElement("sub_police2");
+            declineMark(person);
         },
         1000);
 }
@@ -141,11 +145,14 @@ function PoliceDepartment3(person){
     return PersonPromiseNew(person,
         person.isHasPassport,
         ()=>{
-            let el=	document.getElementsByClassName("sub_police3");
-            el[0].innerHTML+='<div>+<div>';
+            acceptMark(person);
+            // let row = document.getElementById(`${person.id}`);
+            // var td1 = document.createElement("TD");
+            // td1.appendChild(document.createTextNode(`-`));
+            // row.appendChild(td1);
         },
         ()=>{
-            FailElement("sub_police3");
+            declineMark(person);
         },
         1000);
 }
@@ -154,11 +161,10 @@ function MedicalDepartment1(person){
     return PersonPromiseNew(person,
         person.healthy>75,
         ()=>{
-        let el=	document.getElementsByClassName("sub_medicine1");
-        el[0].innerHTML+='<div>+<div>';
+            acceptMark(person);
     },
     ()=>{
-        FailElement("sub_medicine1");
+        declineMark(person);
     },
         1000);
 }
@@ -167,24 +173,22 @@ function MedicalDepartment2(person){
     return PersonPromiseNew(person,
         (person.gender=='male'&&person.healthy>75)||(person.gender=='female'&&person.healthy>85),
         ()=>{
-            let el=	document.getElementsByClassName("sub_medicine2");
-            el[0].innerHTML+='<div>+<div>';
+            acceptMark(person);
         },
         ()=>{
-            FailElement("sub_medicine2");
+            declineMark(person);
         },
         1000);
 }
 
 function BankDepartment1(person){
-    return PersonPromise(person,
+    return PersonPromiseNew(person,
         (person.gender=='male'&&person.payment>1000)||(person.gender=='female'&&person.payment>950),
         ()=>{
-            let el=	document.getElementsByClassName("sub_bank");
-            el[0].innerHTML+='<div>+<div>';
+            acceptMark(person);
         },
         ()=>{
-            FailElement("sub_bank");
+            declineMark(person);
         },
         1000);
 }
@@ -204,6 +208,7 @@ function BankDepartment(person){
 
 function GiveVisa(person){
     return new Promise((resolve, reject) => {
+        acceptMark(person);
         console.log("VISA GIVEN TO PERSON:");
         console.log(person);
         resolve(person);
