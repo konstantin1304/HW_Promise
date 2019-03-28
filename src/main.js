@@ -15,11 +15,21 @@ var persons=
             gender:'male',
             payment: 1000,
             healthy: 80
+        },
+        {
+            name: 'Zina',
+            age:15,
+            isHasPassport:true,
+            gender:'male',
+            payment: 1000,
+            healthy: 80
         }
     ];
-
-MigrationService(persons);
-
+window.onload = function()
+{
+    MigrationService(persons);
+    element();
+};
 function MigrationService(persons){
     let i=0;
     let j;
@@ -78,9 +88,16 @@ function PersonPromiseNew(person,condition,actionComplete, actionFailed, timeout
         }, timeout);
     });
 }
+function element(){
+    for (let i = 0; i < persons.length; i++)
+    {
+        let el = document.getElementsByClassName("Name");
+        el[0].innerHTML += `<div>${persons[i].name}<div>`;
+    }
+}
 
 function FailElement(className){
-    arr=["sub_police1","sub_police2","sub_police3",
+    let arr=["sub_police1","sub_police2","sub_police3",
         "sub_medicine1","sub_medicine2",
         "sub_bank1",
         "give_visa"
@@ -90,7 +107,7 @@ function FailElement(className){
         start++;
     for(let i=start; i<arr.length; i++){
         let el=	document.getElementsByClassName(arr[i]);
-        el.innerHTML+='<div>-<div>';
+        el[0].innerHTML+='<div>-<div>';
     }
 }
 
@@ -99,7 +116,7 @@ function PoliceDepartment1(person){
         person.age>18,
         ()=>{
             let el=	document.getElementsByClassName("sub_police1");
-            el.innerHTML+='<div>+<div>';
+            el[0].innerHTML+='<div>+<div>';
         },
         ()=>{
             FailElement("sub_police1");
@@ -108,42 +125,67 @@ function PoliceDepartment1(person){
 }
 
 function PoliceDepartment2(person){
-    return PersonPromise(person,
+    return PersonPromiseNew(person,
         (person.gender=='male'&&person.age>22)||(person.gender=='female'&&person.age>18),
-        "Police department 2 succeded on person:",
-        "Police department 2 FAILED on person:",
+        ()=>{
+            let el=	document.getElementsByClassName("sub_police2");
+            el[0].innerHTML+='<div>+<div>';
+        },
+        ()=>{
+            FailElement("sub_police2");
+        },
         1000);
 }
 
 function PoliceDepartment3(person){
-    return PersonPromise(person,
+    return PersonPromiseNew(person,
         person.isHasPassport,
-        "Police department 3 succeded on person:",
-        "Police department 3 FAILED on person:",
+        ()=>{
+            let el=	document.getElementsByClassName("sub_police3");
+            el[0].innerHTML+='<div>+<div>';
+        },
+        ()=>{
+            FailElement("sub_police3");
+        },
         1000);
 }
 
 function MedicalDepartment1(person){
-    return PersonPromise(person,
+    return PersonPromiseNew(person,
         person.healthy>75,
-        "Medical department 1 succeded on person:",
-        "Medical department 1 FAILED on person:",
+        ()=>{
+        let el=	document.getElementsByClassName("sub_medicine1");
+        el[0].innerHTML+='<div>+<div>';
+    },
+    ()=>{
+        FailElement("sub_medicine1");
+    },
         1000);
 }
 
 function MedicalDepartment2(person){
-    return PersonPromise(person,
+    return PersonPromiseNew(person,
         (person.gender=='male'&&person.healthy>75)||(person.gender=='female'&&person.healthy>85),
-        "Medical department 2 succeded on person:",
-        "Medical department 2 FAILED on person:",
+        ()=>{
+            let el=	document.getElementsByClassName("sub_medicine2");
+            el[0].innerHTML+='<div>+<div>';
+        },
+        ()=>{
+            FailElement("sub_medicine2");
+        },
         1000);
 }
 
 function BankDepartment1(person){
     return PersonPromise(person,
         (person.gender=='male'&&person.payment>1000)||(person.gender=='female'&&person.payment>950),
-        "Bank department 1 succeded on person:",
-        "Bank department 1 FAILED on person:",
+        ()=>{
+            let el=	document.getElementsByClassName("sub_bank");
+            el[0].innerHTML+='<div>+<div>';
+        },
+        ()=>{
+            FailElement("sub_bank");
+        },
         1000);
 }
 
