@@ -3,34 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>Title</title>
+    <title>Getting VISA</title>
 </head>
 <body>
-<div class="Registration">
+<div class="registration">
     <form onsubmit="createGroup(); return false;">
-        <input id = "quantity" type="text" placeholder="Quantity of persons for generating" size="25" required><br>
-        <input id = "name" type="text" placeholder="Name" size="25" required><br>
-        <input id = "age" type="text" placeholder="Age" size="25" required><br>
-        <input id = "passport" type="text" placeholder="is Has a passport" size="25" required><br>
-        <input id = "gender" type="text" placeholder="Gender" size="25" required><br>
-        <input id = "payment" type="text" placeholder="Payment" size="25" required><br>
-        <input id = "health" type="text" placeholder="Health" size="25" required><br>
+        <input id = "quantity" type="text" placeholder="Quantity of persons for generating" required><br>
+        <input id = "name" type="text" placeholder="Name" required><br>
+        <input id = "age" type="number" placeholder="Age" required><br>
+        <input id = "passport" type="text" placeholder="is Has a passport" required><br>
+        <input id = "gender" type="text" placeholder="Gender" required><br>
+        <input id = "payment" type="number" placeholder="Payment" required><br>
+        <input id = "health" type="number" placeholder="Health" required><br>
         <button class="submit">Get Visa for All</button>
     </form>
 </div>
-<table id="myTable" cellspacing="0" border="1">
-<tbody>
-<tr>
-    <td rowspan="2">Name</td></td><td colspan="3">Police Department</td><td colspan="2">Medicine Department</td><td rowspan="2">Bank Department</td><td rowspan="2">VISA accepted</td>
-
-</tr>
-<tr>
-    <td>Police Dep1</td><td>Police Dep2</td><td>Police Dep3</td><td>Med Dep1</td><td>Med Dep2</td>
-
-</tr>
-</tbody>
-</table>
-
+<div class="view">
+    <table class="table" id="myTable" cellspacing="0" border="1">
+        <tr>
+            <td rowspan="2" class="cell1">Name</td>
+            <!--<td rowspan="2">Age</td>
+           <td rowspan="2">Passport</td>
+            <td rowspan="2">Gender</td>
+            <td rowspan="2">Payment</td>
+            <td rowspan="2">Healthy</td>-->
+            <td colspan="3">Police Department</td>
+            <td colspan="2">Medical Department</td>
+            <td rowspan="2" class="cell9">Bank Department</td>
+            <td rowspan="2">Getting VISA</td>
+        </tr>
+        <tr>
+            <td>Police Dep1</td>
+            <td>Police Dep2</td>
+            <td>Police Dep3</td>
+            <td>Medical Dep1</td>
+            <td>Medical Dep2</td>
+        </tr>
+    </table>
+</div>
 </body>
 <script src="src/faker.js"></script>
 <script src="src/main.js"></script>

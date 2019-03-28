@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="Registration">
+    <form onsubmit="createGroup(); return false;">
+        <input id = "quantity" type="text" placeholder="Quantity of persons for generating" size="25" required><br>
+        <input id = "name" type="text" placeholder="Name" size="25" required><br>
+        <input id = "age" type="text" placeholder="Age" size="25" required><br>
+        <input id = "passport" type="text" placeholder="is Has a passport" size="25" required><br>
+        <input id = "gender" type="text" placeholder="Gender" size="25" required><br>
+        <input id = "payment" type="text" placeholder="Payment" size="25" required><br>
+        <input id = "health" type="text" placeholder="Health" size="25" required><br>
+        <button class="submit">Get Visa for All</button>
+    </form>
+</div>
+<table id="myTable" cellspacing="0" border="1">
+<tbody>
+<tr>
+    <td rowspan="2">Name</td></td><td colspan="3">Police Department</td><td colspan="2">Medicine Department</td><td rowspan="2">Bank Department</td><td rowspan="2">VISA accepted</td>
+
+</tr>
+<tr>
+    <td>Police Dep1</td><td>Police Dep2</td><td>Police Dep3</td><td>Med Dep1</td><td>Med Dep2</td>
+
+</tr>
+</tbody>
+</table>
+
+</body>
+<script src="src/faker.js"></script>
+<script src="src/main.js"></script>
+<script src="src/generate_persone.js"></script>
+</html>

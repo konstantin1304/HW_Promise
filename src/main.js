@@ -1,34 +1,4 @@
-/*var persons=
-    [
-        {
-            id : "asdfaasds",
-            name:'Vasya',
-            age:25,
-            isHasPassport:true,
-            gender:'male',
-            payment: 1100,
-            healthy: 80
-        },
-        {
-            id : "asdfasfd",
-            name: 'Petya',
-            age:30,
-            isHasPassport:true,
-            gender:'male',
-            payment: 1000,
-            healthy: 80
-        },
-        {
-            id : "asdfasasd",
-            name: 'Zina',
-            age:15,
-            isHasPassport:true,
-            gender:'male',
-            payment: 1000,
-            healthy: 80
-        }
-    ];
-*/
+
 
 function acceptMark(person){
     let row = document.getElementById(`${person.id}`);
@@ -95,9 +65,7 @@ function element(id){
         var td1 = document.createElement("TD");
         row.setAttribute("id",`${persons[i].id}`);
         td1.appendChild(document.createTextNode(`${persons[i].name}`));
-
         row.appendChild(td1);
-
         tbody.appendChild(row);
     }
 }
@@ -146,10 +114,7 @@ function PoliceDepartment3(person){
         person.isHasPassport,
         ()=>{
             acceptMark(person);
-            // let row = document.getElementById(`${person.id}`);
-            // var td1 = document.createElement("TD");
-            // td1.appendChild(document.createTextNode(`-`));
-            // row.appendChild(td1);
+
         },
         ()=>{
             declineMark(person);
@@ -159,7 +124,7 @@ function PoliceDepartment3(person){
 
 function MedicalDepartment1(person){
     return PersonPromiseNew(person,
-        person.healthy>75,
+        person.health>75,
         ()=>{
             acceptMark(person);
     },
@@ -171,7 +136,7 @@ function MedicalDepartment1(person){
 
 function MedicalDepartment2(person){
     return PersonPromiseNew(person,
-        (person.gender=='male'&&person.healthy>75)||(person.gender=='female'&&person.healthy>85),
+        (person.gender=='male'&&person.health>75)||(person.gender=='female'&&person.health>85),
         ()=>{
             acceptMark(person);
         },
@@ -214,3 +179,35 @@ function GiveVisa(person){
         resolve(person);
     });
 }
+
+/*var persons=
+    [
+        {
+            id : "asdfaasds",
+            name:'Vasya',
+            age:25,
+            isHasPassport:true,
+            gender:'male',
+            payment: 1100,
+            healthy: 80
+        },
+        {
+            id : "asdfasfd",
+            name: 'Petya',
+            age:30,
+            isHasPassport:true,
+            gender:'male',
+            payment: 1000,
+            healthy: 80
+        },
+        {
+            id : "asdfasasd",
+            name: 'Zina',
+            age:15,
+            isHasPassport:true,
+            gender:'male',
+            payment: 1000,
+            healthy: 80
+        }
+    ];
+*/

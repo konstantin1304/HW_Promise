@@ -20,7 +20,7 @@ function createGroup () {
     let quantity = +quantityPerson.value;
     const firstPerson = new SinglePerson();
     let count = 1;
-    persons.push(new Person(count,firstPerson.name, firstPerson.age, firstPerson.isHasPassport, firstPerson.gender, firstPerson.payment, firstPerson.health));
+    persons.push(new Person(count,firstPerson.name, firstPerson.age, firstPerson.isHasPassport, firstPerson.health, firstPerson.payment, firstPerson.gender));
 
     if(quantity>1){
         for (let i = 1; i < quantity; i++) {
