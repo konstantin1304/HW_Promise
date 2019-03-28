@@ -1,131 +1,41 @@
-.Registration{
-    display: flex;
-    margin-left: 10px;
+.registration{
     margin-top: 20px;
+    margin-left: 35%;
+    position: relative;
 }
 
 input {
     margin: 3px;
+    width: 300px;
 }
 
 .submit{
-    width: 100%;
-    margin-top: 2px;
+    width: 250px;
+    position: center;
+    margin-top: 8px;
+    margin-left: 30px;
+    font-weight: bolder;
 }
 
 .view{
-    display: flex;
-    flex-direction: row;
-    border: 1px solid black;
     width: 90%;
     height: 60px;
     margin: 40px;
 }
 
-.person{
-    display: flex;
+.table {
     width: 100%;
-    height: 60px;
-    border: 1px solid black;
-    margin: auto;
+    table-layout: fixed;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
 
-.person div{
-    flex-direction: row;
-    width: 100%;
-    height: 60px;
-    border: 1px solid black;
+.cell1{
+    width: 130px;
 }
 
-.department{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    width: 100%;
-    margin: auto;
-    height: 60px;
+.cell9{
+    width: 90px;
 }
 
-/*.department div{*/
-    /*flex-direction: column;*/
-    /*width: 100%;*/
-    /*!*height: 60px;*!*/
-    /*border: 1px solid black;*/
-/*}*/
-
-.pmb{
-    display: flex;
-    flex-direction: row;
-    border: 1px solid black;
-    width: 100%;
-    margin: auto;
-    height: 30px;
-}
-
-.police{
-    width: 50%;
-    border: 1px solid black;
-}
-
-.medicine{
-    width: 34%;
-    border: 1px solid black;
-}
-
-.bank{
-    width: 16%;
-    border: 1px solid black;
-}
-
-.sub_pmb{
-    display: flex;
-    flex-direction: row;
-    border: 1px solid black;
-    width: 100%;
-    margin: auto;
-    height: 30px;
-}
-
-.sub_pmb div{
-    border: 1px solid black;
-}
-
-.sub_police{
-    display: flex;
-    border: 1px solid black;
-    width: 50%;
-    margin: auto;
-    height: 30px;
-}
-.sub_medicine{
-    display: flex;
-    border: 1px solid black;
-    width: 34%;
-    margin: auto;
-    height: 30px;
-}
-.sub_bank{
-    display: flex;
-    border: 1px solid black;
-    width: 16%;
-    margin: auto;
-    height: 30px;
-}
-
-.sub_police div{
-    flex-direction: row;
-    width: 100%;
-    border: 1px solid black;
-}
-
-.sub_medicine div{
-    flex-direction: row;
-    width: 100%;
-    border: 1px solid black;
-}
-
-.sub_bank div{
-    flex-direction: row;
-    width: 100%;
-    border: 1px solid black;
-}
